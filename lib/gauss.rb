@@ -1,5 +1,15 @@
 require "gauss/version"
+require "gauss_command"
+require "pry"
 
 module Gauss
-  # Your code goes here...
+  def self.run(args)
+   begin
+     GaussCommand.send args[0], args[1..-1]
+   rescue
+     GaussCommand.help
+     puts "\n#{$!}"
+     binding.pry
+   end
+  end
 end

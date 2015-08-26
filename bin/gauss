@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require "gauss"
+require "dotenv"
+
+Dotenv.load('~/.gauss')
+
+args = ARGV.map { |arg| arg.to_sym }
+args[0] ||= :help
+Gauss.run(args)
