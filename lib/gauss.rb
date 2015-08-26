@@ -8,7 +8,9 @@ module Gauss
      GaussCommand.send args[0], args[1..-1]
    rescue
      GaussCommand.help
-     puts "\n#{$!}"
+     puts
+     puts $!
+     puts $@
      binding.pry
    end
   end
