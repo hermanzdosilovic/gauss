@@ -8,6 +8,7 @@ module Gauss
      GaussCommand.send args[0], args[1..-1]
    rescue
      GaussCommand.help
+     # only for development
      puts
      puts $!
      puts $@
