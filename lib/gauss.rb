@@ -1,6 +1,6 @@
-require "version"
-require "gauss_command"
-require "pry"
+require 'version'
+require 'gauss_command'
+require 'pry'
 
 module Gauss
   GAUSS_KEY = ENV['HOME'] + '/.gauss.key'

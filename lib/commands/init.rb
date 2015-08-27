@@ -1,5 +1,5 @@
-require "httparty"
-require "io/console"
+require 'httparty'
+require 'io/console'
 
 module Gauss
   module GaussCommand

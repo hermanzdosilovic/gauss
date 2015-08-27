@@ -1,5 +1,5 @@
-require "commands/help"
-require "commands/init"
+require 'commands/help'
+require 'commands/init'
 
 module Gauss
   module GaussCommand
