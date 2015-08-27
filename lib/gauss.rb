@@ -14,7 +14,7 @@ module Gauss
      GaussCommand.help
      # only for development
      # puts
-     # puts $!
+     puts $!
      # puts $@
      # binding.pry
    end
