@@ -9,4 +9,5 @@ rescue Dotenv::FormatError
   exit
 end
 
+ARGV[0] ||= 'help'
 Gauss.run(ARGV)

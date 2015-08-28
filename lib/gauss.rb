@@ -1,5 +1,5 @@
 require 'pry'
-require 'active_support/all'
+require 'active_support/inflector'
 
 require 'commands/help'
 require 'commands/init'
