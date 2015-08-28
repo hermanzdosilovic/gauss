@@ -1,22 +1,23 @@
-require 'version'
-require 'gauss_command'
 require 'pry'
+
+require 'commands/help'
+require 'commands/init'
 
 module Gauss
   GAUSS_KEY = ENV['HOME'] + '/.gauss.key'
   GAUSS_CONF = '.gauss'
   GAUSS_GLOBAL_CONF = ENV['HOME'] + '/' + GAUSS_CONF
 
+  BASE_URL = 'https://productive.io/api/v1'
+
   def self.run(args)
-   begin
-     GaussCommand.send args[0], args[1..-1]
-   rescue
-     GaussCommand.help
-     # only for development
-     # puts
-     puts $!
-     # puts $@
-     # binding.pry
-   end
+    command = args[0]
+    arguments = args[1..-1]
+
+    case command
+    when 'init' then Init.init arguments
+    when 'help' then Help.help
+    else Help.help
+    end
   end
 end

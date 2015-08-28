@@ -1,14 +1,12 @@
 #!/usr/bin/env ruby
-require "gauss"
-require "dotenv"
+require 'gauss'
+require 'dotenv'
 
 begin
-  Dotenv.load(ENV['HOME'] + '/.gauss')
+  Dotenv.load(Gauss::GAUSS_KEY)
 rescue Dotenv::FormatError
-  puts "Your Gauss configuration file (" + ENV['HOME'] + "/.gauss) is invalid."
+  puts "Your Gauss key configuration file (#{Gauss::GAUSS_KEY}) is invalid."
   exit
 end
 
-args = ARGV.map(&:to_sym)
-args[0] ||= :help
-Gauss.run(args)
+Gauss.run(ARGV)
