@@ -3,6 +3,7 @@ require 'active_support/inflector'
 
 require 'commands/help'
 require 'commands/init'
+require 'commands/set'
 
 module Gauss
   GAUSS_KEY = ENV['HOME'] + '/.gauss.key'
@@ -14,7 +15,6 @@ module Gauss
   def self.run(args)
     command = args[0]
     arguments = args[1..-1]
-
     Object.const_get('Gauss::' + command.classify).run arguments
   end
 end

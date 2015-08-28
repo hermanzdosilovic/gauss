@@ -1,13 +1,12 @@
 require 'optparse'
-require 'pry'
 
 module Gauss
-  module Init
-    module InitParser
+  module Set
+    module SetParser
       @option_parser = OptionParser.new do |opts|
         @args = {}
 
-        opts.banner = 'usage: gauss init [<args>]'
+        opts.banner = 'usage: gauss set [<args>]'
 
         opts.on('-tTASK', '--task=TASK', 'Initalize task for current project') do |n|
           @args[:task] = n

@@ -1,30 +1,11 @@
 require 'httparty'
 require 'io/console'
 
-require 'commands/parsers/init_parser'
-
 module Gauss
   module Init
     AUTHENTICATION_SESSION = '/users/login'
 
-    def self.run(args = [])
-      begin
-        arguments = InitParser.parse(args)
-      rescue
-        puts InitParser.usage
-        return
-      end
-
-      if arguments.any?
-        puts arguments
-      else
-        init_gauss_key
-      end
-    end
-
-    private
-
-    def self.init_gauss_key
+    def self.run(args_ignorable = [])
       begin
         print 'username: '
         username = STDIN.gets.chomp
