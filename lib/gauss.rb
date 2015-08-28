@@ -1,4 +1,5 @@
 require 'pry'
+require 'active_support/all'
 
 require 'commands/help'
 require 'commands/init'
@@ -14,10 +15,6 @@ module Gauss
     command = args[0]
     arguments = args[1..-1]
 
-    case command
-    when 'init' then Init.init arguments
-    when 'help' then Help.help
-    else Help.help
-    end
+    Object.const_get('Gauss::' + command.classify).run arguments
   end
 end

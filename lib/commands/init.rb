@@ -7,7 +7,7 @@ module Gauss
   module Init
     AUTHENTICATION_SESSION = '/users/login'
 
-    def self.init(args = [])
+    def self.run(args = [])
       begin
         arguments = InitParser.parse(args)
       rescue

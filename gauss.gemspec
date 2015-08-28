@@ -19,6 +19,12 @@ Gem::Specification.new do |spec|
   spec.executables   = 'gauss'
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'activesupport', '4.2.4'
+  spec.add_dependency 'httparty', '0.13.5'
+  spec.add_dependency 'json', '1.8.3'
+  spec.add_dependency 'dotenv', '~> 2.0'
+
   spec.add_development_dependency 'bundler', '~> 1.10'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 10.4'
+  spec.add_development_dependency 'pry', '~> 0.10'
 end
