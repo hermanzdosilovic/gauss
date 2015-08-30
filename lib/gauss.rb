@@ -1,6 +1,7 @@
 require 'pry'
 
 require 'commands/help'
+require 'commands/info'
 require 'commands/init'
 require 'commands/set'
 
