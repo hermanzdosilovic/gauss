@@ -22,9 +22,9 @@ module Gauss
         end
 
         puts "\nAuthentication successfull"
-        gauss_conf_file = File.open(GAUSS_KEY, 'w')
-        gauss_conf_file.puts("PRODUCTIVE_API_KEY=#{response['response']['token']}")
-        gauss_conf_file.close
+        gauss_key_file = File.open(GAUSS_KEY, 'w')
+        gauss_key_file.puts("PRODUCTIVE_API_KEY=#{response['response']['token']}")
+        gauss_key_file.close
       rescue Interrupt
         puts
       end

@@ -8,16 +8,20 @@ module Gauss
 
         opts.banner = 'usage: gauss set [<args>]'
 
-        opts.on('-tTASK', '--task=TASK', 'Initalize task for current project') do |n|
-          @args[:task] = n
+        opts.on('-oORGANIZATION', '--organization=ORGANIZATION', 'Set organization') do |n|
+          @args[:organization] = n
         end
 
-        opts.on('-sSERVICE', '--service=SERVICE', 'Initalize clocking service') do |n|
+        opts.on('-pPROJECT', '--project=PROJECT', 'Set project') do |n|
+          @args[:project] = n
+        end
+
+        opts.on('-sSERVICE', '--service=SERVICE', 'Set clocking service') do |n|
           @args[:service] = n
         end
 
-        opts.on('-pPROJECT', '--project=PROJECT', 'Initalize project') do |n|
-          @args[:project] = n
+        opts.on('-tTASK', '--task=TASK', 'Set task for current project') do |n|
+          @args[:task] = n
         end
 
         opts.on_tail('-h', '--help', 'Show this message') do

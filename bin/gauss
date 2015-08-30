@@ -2,11 +2,13 @@
 require 'gauss'
 require 'dotenv'
 
-begin
-  Dotenv.load(Gauss::GAUSS_KEY)
-rescue Dotenv::FormatError
-  puts "Your Gauss key configuration file (#{Gauss::GAUSS_KEY}) is invalid."
-  exit
+[Gauss::GAUSS_KEY, Gauss::GAUSS_CONF].each do |file|
+  begin
+    Dotenv.load(file)
+  rescue Dotenv::FormatError
+    puts "Your Gauss key configuration file (#{file}) is invalid."
+    exit
+  end
 end
 
 ARGV[0] ||= 'help'

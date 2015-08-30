@@ -13,8 +13,6 @@ module Gauss
   BASE_URL = 'https://productive.io/api/v1'
 
   def self.run(args)
-    command = args[0]
-    arguments = args[1..-1]
-    Object.const_get('Gauss::' + command.classify).run arguments
+    Object.const_get('Gauss::' + args[0].classify).run args[1..-1]
   end
 end
