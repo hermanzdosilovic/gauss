@@ -10,8 +10,15 @@ module Gauss
         return
       end
 
+      if attributes.empty?
+        attributes[:organization] = nil
+        attributes[:project] = nil
+        attributes[:task] = nil
+        attributes[:service] = nil
+      end
+
       message = ''
-      attributes.each do |key, value|
+      attributes.keys.each do |key|
         message << "#{key.upcase}: #{ENV[key.upcase.to_s] || 'N/A'}\n"
       end
       print message
