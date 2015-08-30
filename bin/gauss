@@ -6,7 +6,7 @@ require 'dotenv'
   begin
     Dotenv.load(file)
   rescue Dotenv::FormatError
-    puts "Your Gauss key configuration file (#{file}) is invalid."
+    puts "Your Gauss configuration file (#{file}) is invalid."
     exit
   end
 end

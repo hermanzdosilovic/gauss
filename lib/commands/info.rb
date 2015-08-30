@@ -10,6 +10,7 @@ module Gauss
         return
       end
 
+      # if everything is empty show all info
       if attributes.empty?
         attributes[:organization] = nil
         attributes[:project] = nil
