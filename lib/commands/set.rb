@@ -17,14 +17,8 @@ module Gauss
       Env.update(attributes)
       premissions = Premissions.new(attributes)
 
-      if premissions.cannot_access_organization?
-        puts 'You are not part of specified organization.'
-        return
-      elsif premissions.cannot_access_project?
-        puts 'Project you are looking for does not exist in this organization.'
-        return
-      elsif premissions.cannot_access_task?
-        puts 'Task you are looking for does not exist in this project.'
+      if premissions.invalid?
+        puts premissions.errors
         return
       end
 

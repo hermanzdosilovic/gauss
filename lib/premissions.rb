@@ -1,5 +1,7 @@
 module Gauss
   class Premissions
+    attr_reader :errors
+
     def initialize(attributes = {})
       @attributes = attributes
 
@@ -11,6 +13,18 @@ module Gauss
 
       @projects = []
       @tasks = Hash.new {|h, k| h[k] = []}
+    end
+
+    def invalid?
+      @errors = ''
+      if cannot_access_organization?
+        @errors = 'You are not part of specified organization.'
+      elsif cannot_access_project?
+        @errors = 'Project you are looking for does not exist in this organization.'
+      elsif cannot_access_task?
+        @errors = 'Task you are looking for does not exist in this project.'
+      end
+      !@errors.empty?
     end
 
     def cannot_access_organization?
