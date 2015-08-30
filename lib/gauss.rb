@@ -1,5 +1,4 @@
 require 'pry'
-require 'active_support/inflector'
 
 require 'commands/help'
 require 'commands/init'
@@ -13,6 +12,12 @@ module Gauss
   BASE_URL = 'https://productive.io/api/v1'
 
   def self.run(args)
-    Object.const_get('Gauss::' + args[0].classify).run args[1..-1]
+    Object.const_get('Gauss::' + classify(args[0])).run args[1..-1]
+  end
+
+  private
+
+  def self.classify(string)
+    string[0].upcase + string[1..-1].downcase
   end
 end

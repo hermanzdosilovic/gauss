@@ -1,5 +1,3 @@
-require 'pry'
-
 module Gauss
   class Premissions
     def initialize(attributes = {})
