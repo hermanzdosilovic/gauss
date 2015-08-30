@@ -1,11 +1,15 @@
 require 'httparty'
 require 'io/console'
 
+require 'commands/parsers/init_parser'
+
 module Gauss
   module Init
     AUTHENTICATION_SESSION = '/users/login'
 
-    def self.run(args_ignorable = [])
+    def self.run(args = [])
+      flags = InitParser.parse(args)
+
       print 'username: '
       username = STDIN.gets.chomp
 
@@ -22,11 +26,17 @@ module Gauss
       end
 
       puts "Authentication successfull"
-      gauss_key_file = File.open(GAUSS_KEY, 'w')
-      gauss_key_file.puts("PRODUCTIVE_API_KEY=#{response['response']['token']}")
-      gauss_key_file.close
+      attributes = {productive_api_key: response['response']['token']}
+
+      if flags[:local]
+        Config.update(GAUSS_LOCAL_CONF, attributes)
+      else
+        Config.update(GAUSS_GLOBAL_CONF, attributes)
+      end
     rescue Interrupt
       puts
+    rescue
+      puts InitParser.usage
     end
   end
 end

@@ -22,5 +22,17 @@ module Gauss
       # update current env variables
       Env.update(file_attributes)
     end
+
+    def self.toplevel(path)
+      files = Dir[File.expand_path(path) + '/.*']
+
+      if File.expand_path(path) == '/'
+        return File.expand_path(path)
+      elsif files.map { |f| f.sub /.*\//, '' }.include? '.gauss'
+        return File.expand_path(path)
+      else
+        return toplevel('../' + path)
+      end
+    end
   end
 end

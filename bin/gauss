@@ -2,7 +2,8 @@
 require 'gauss'
 require 'dotenv'
 
-[Gauss::GAUSS_KEY, Gauss::GAUSS_CONF].each do |file|
+require 'pry'
+[Gauss::GAUSS_LOCAL_CONF, Gauss::GAUSS_GLOBAL_CONF].each do |file|
   begin
     Dotenv.load(file)
   rescue Dotenv::FormatError

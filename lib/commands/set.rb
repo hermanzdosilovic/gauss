@@ -13,13 +13,20 @@ module Gauss
         return
       end
 
+      global = attributes[:global]
+      attributes.delete(:global)
+
       premissions = Premissions.new(attributes)
       if premissions.invalid?
         puts premissions.errors
         return
       end
 
-      Config.update(GAUSS_CONF, attributes)
+      if global
+        Config.update(GAUSS_GLOBAL_CONF, attributes)
+      else
+        Config.update(GAUSS_LOCAL_CONF, attributes)
+      end
     end
   end
 end

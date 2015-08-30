@@ -20,6 +20,10 @@ module Gauss
           @args[:task] = n
         end
 
+        opts.on('-g', '--global', 'Set as global settings') do |n|
+          @args[:global] = n
+        end
+
         opts.on_tail('-h', '--help', 'Show this message') do
           puts opts
           exit
