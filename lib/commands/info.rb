@@ -15,7 +15,6 @@ module Gauss
         attributes[:organization] = nil
         attributes[:project] = nil
         attributes[:task] = nil
-        attributes[:service] = nil
       end
 
       message = ''

@@ -16,10 +16,6 @@ module Gauss
           @args[:project] = n
         end
 
-        opts.on('-s', '--service', 'Get current clocking service') do |n|
-          @args[:service] = n
-        end
-
         opts.on('-t', '--task', 'Get current task of project') do |n|
           @args[:task] = n
         end

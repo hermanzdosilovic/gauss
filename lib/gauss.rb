@@ -14,6 +14,8 @@ module Gauss
 
   def self.run(args)
     Object.const_get('Gauss::' + classify(args[0])).run args[1..-1]
+  rescue
+    puts "gauss: '#{args[0]}' is not a gauss command. See 'gauss help'."
   end
 
   private
