@@ -3,13 +3,17 @@ module Gauss
     attr_reader :errors
 
     def initialize(attributes = {})
-      @attributes = attributes
+      @attributes = attributes.clone
 
+      # Default organization_id is 'gauss'. This will always lead to 404 in Productive API.
+      @attributes[:organization] ||= ENV['ORGANIZATION'] || 'gauss'
+      @attributes[:project] ||= ENV['PROJECT'] unless ENV['PROJECT'].nil?
+      @attributes[:task] ||= ENV['TASK'] unless ENV['TASK'].nil?
+
+      # this will allow skipping task and project premission check if user did not specify
+      # any options for task or project
       @cannot_access_task = false if @attributes[:task].nil?
       @cannot_access_project = false if @attributes[:project].nil?
-
-      @attributes[:organization] ||= ENV['ORGANIZATION'] || 'gauss'
-      @attributes[:project] ||= ENV['PROJECT'] if ENV['PROJECT']
 
       @projects = []
       @tasks = Hash.new {|h, k| h[k] = []}
@@ -18,7 +22,7 @@ module Gauss
     def invalid?
       @errors = ''
       if cannot_access_organization?
-        @errors = 'You are not part of specified organization.'
+        @errors = 'You are not part of this organization.'
       elsif cannot_access_project?
         @errors = 'Project you are looking for does not exist in this organization.'
       elsif cannot_access_task?
@@ -28,13 +32,13 @@ module Gauss
     end
 
     def cannot_access_organization?
-      fetch_organization_projects if @cannot_access_organization.nil?
+      fetch_organization_projects if @cannot_access_organization.nil? # do not fetch twice method
       @cannot_access_organization
     end
 
     def cannot_access_project?
-      if @cannot_access_project.nil? || @projects.empty?
-        fetch_organization_projects
+      if @cannot_access_project.nil?
+        fetch_organization_projects if @projects.empty?
         @cannot_access_project = !(@projects.include? @attributes[:project])
       end
       @cannot_access_project

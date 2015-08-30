@@ -1,5 +1,4 @@
 require 'config'
-require 'env'
 require 'premissions'
 
 require 'commands/parsers/set_parser'
@@ -14,9 +13,7 @@ module Gauss
         return
       end
 
-      Env.update(attributes)
       premissions = Premissions.new(attributes)
-
       if premissions.invalid?
         puts premissions.errors
         return

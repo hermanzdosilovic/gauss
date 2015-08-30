@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'env'
 
 module Gauss
   module Config
