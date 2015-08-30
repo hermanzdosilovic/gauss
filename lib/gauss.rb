@@ -1,5 +1,6 @@
 require 'pry'
 
+require 'commands/clock'
 require 'commands/help'
 require 'commands/info'
 require 'commands/init'

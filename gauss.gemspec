@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Herman Zvonimir Došilović']
   spec.email         = ['hermanz.dosilovic@gmail.com']
 
-  spec.summary       = 'CLI for https://productive.io'
+  spec.summary       = 'CLI for https://productive.io build with Productive API'
   spec.description   = 'CLI for https://productive.io'
   spec.homepage      = 'https://github.com/hermanzdosilovic/gauss'
   spec.license       = 'MIT'
@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'httparty', '~> 0.13'
   spec.add_dependency 'json', '1.8.3'
   spec.add_dependency 'dotenv', '~> 2.0'
+  spec.add_dependency 'git', '~> 1.2'
+  spec.add_dependency 'clipboard', '~> 1.0'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 10.4'
